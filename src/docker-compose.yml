@@ -1,0 +1,6 @@
+services:
+  payments.api:
+    image: ${DOCKER_REGISTRY-}paymentsapi
+    build:
+      context: .
+      dockerfile: Service/Payments/Payments.API/Dockerfile
