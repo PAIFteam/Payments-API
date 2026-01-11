@@ -1,6 +1,4 @@
-﻿using Payments.API.Enums;
-
-namespace Payments.API.Models;
+﻿namespace Payments.API.Models;
 
 public class PaymentModel
 {

@@ -1,6 +1,3 @@
-using Carter;
-using Marten;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container 
