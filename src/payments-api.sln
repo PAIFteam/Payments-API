@@ -1,11 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36603.0 d17.14
+VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{F237D0F7-1F84-4951-ABF4-880D0A2C2E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.API", "Service\Payments\Payments.API\Payments.API.csproj", "{CA0E4993-17C3-4A16-B109-BDDF827B55E5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA0E4993-17C3-4A16-B109-BDDF827B55E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0E4993-17C3-4A16-B109-BDDF827B55E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0E4993-17C3-4A16-B109-BDDF827B55E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0E4993-17C3-4A16-B109-BDDF827B55E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F237D0F7-1F84-4951-ABF4-880D0A2C2E58} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{CA0E4993-17C3-4A16-B109-BDDF827B55E5} = {F237D0F7-1F84-4951-ABF4-880D0A2C2E58}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65F51CA9-7E52-4AF2-8C69-9527627D8DB5}
