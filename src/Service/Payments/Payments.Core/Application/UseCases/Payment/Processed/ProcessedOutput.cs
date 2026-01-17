@@ -2,7 +2,7 @@
 
 namespace Payments.Core.Application.UseCases.Payment.Processed
 {
-    public class ProcessedOutput:OutPutBase
+    public class ProcessedOutPut:OutPutBase
     {
         public int IdUser { get; set; }
 

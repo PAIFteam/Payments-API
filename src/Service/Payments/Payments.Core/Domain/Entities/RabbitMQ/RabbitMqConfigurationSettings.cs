@@ -24,6 +24,6 @@ namespace Payments.Core.Domain.Entities.RabbitMQ
         //rabbitmq://[usuário:senha@]host[:porta]/[vhost/][nome-da-fila-ou-exchange]
         //public Uri GetQueueAdress() => new Uri($"amqp://{Username}:{Password}@{HostName}:5672/{QueueName}");
         public Uri GetQueueAdress() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueName}");
-        public Uri GetQueueConsumerAdress() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueNameConsumer}");
+        public Uri GetQueueAdressConsumer() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueNameConsumer}");
     }
 }

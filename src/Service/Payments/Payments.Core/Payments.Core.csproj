@@ -7,13 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Commons\Enums\" />
-    <Folder Include="Application\Configurations\" />
-    <Folder Include="Application\Mappings\" />
-    <Folder Include="Domain\Azure\" />
-    <Folder Include="Domain\Messages\Contracts\" />
-    <Folder Include="Domain\Messages\Envelopes\" />
-    <Folder Include="Domain\Models\" />
+    <Compile Remove="Domain\Interfaces\IProcessedUseCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="13.0.0" />

@@ -1,7 +1,10 @@
-using Payments.API.Extensions;
-using Payments.Infra.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Payments.API.Extensions;
+//using Payments.Core.Application.UseCases.Payment.Processed;
+using Payments.Core.Domain.Interfaces;
+using Payments.Infra.Extensions;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,12 +27,14 @@ var key = Encoding.ASCII.GetBytes("abc123");
 //        ClockSkew = TimeSpan.Zero
 //    };
 //});
+//
 
-builder.Services.AddAuthorization();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfraestructure();
 builder.Services.AddRabbitMq(builder.Configuration);
-builder.Services.AddConsumer(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -44,7 +49,6 @@ app.UseHttpsRedirection();
 ////app.UseAuthentication();
 ////app.UseAuthorization();
 
-app.MapUserEndpoints();
 
 app.Run();
 
