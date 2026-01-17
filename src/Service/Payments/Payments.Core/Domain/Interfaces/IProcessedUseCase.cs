@@ -1,4 +1,4 @@
-﻿using Payments.Core.Application.UseCases.Payment.Processed;
+﻿//using Payments.Core.Application.UseCases.Payment.Processed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace Payments.Core.Domain.Interfaces
 {
     public interface IProcessedUseCase
     {
-        public Task<ProcessedOutput> ExecuteAsync(ProcessedInput input);
+        //public Task<ProcessedOutPut> ExecuteAsync(ProcessedInput input);
     }
 }

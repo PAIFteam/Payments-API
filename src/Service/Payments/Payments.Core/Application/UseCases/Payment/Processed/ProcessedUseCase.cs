@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Logging;
-using Payments.Core.Application.UseCases.Payment.Processed;
 using Payments.Core.Domain.Entities.Base;
 using Payments.Core.Domain.Entities.RabbitMQ;
 using Payments.Core.Domain.Interfaces;
-using System.Text.RegularExpressions;
 
-namespace Users.Core.Application.UseCases.Users.PutUser
+
+namespace Payments.Core.Application.UseCases.Payment.Processed
 {
     public class ProcessedUseCase
     {
         private readonly RabbitMqConfigurationSettings _rabbitMqConfigurationSettings;
-        private readonly ILogger<ProcessedUseCase> _logger;
         private readonly IPublisher _publisher;
+        private readonly ILogger<ProcessedUseCase> _logger;
+       
 
-        public ProcessedUseCase(RabbitMqConfigurationSettings rabbitMqConfigurationSettings,
-               IPublisher publisher,
-               ILogger<ProcessedUseCase> logger
+        public ProcessedUseCase(
+                RabbitMqConfigurationSettings rabbitMqConfigurationSettings,
+                IPublisher publisher,
+                ILogger<ProcessedUseCase> logger
         )
         {
             _rabbitMqConfigurationSettings = rabbitMqConfigurationSettings;
@@ -24,10 +24,10 @@ namespace Users.Core.Application.UseCases.Users.PutUser
             _logger = logger;
         }
 
-        public async Task<ProcessedOutput> ExecuteAsync(ProcessedInput input)
+        public async Task<ProcessedOutPut> ExecuteAsync(ProcessedInput input)
         {
 
-            _logger.LogInformation("Starting PutUserUseCase.ExecuteAsync");
+            _logger.LogInformation("Starting ProcessedUseCase.ExecuteAsync");
 
             var paymentAproved = false;
             var messageRespText = "";
@@ -39,7 +39,7 @@ namespace Users.Core.Application.UseCases.Users.PutUser
 
                 if (!outPutBase.Result)
                 {
-                    return new ProcessedOutput
+                    return new ProcessedOutPut
                     {
                         Result = false,
                         Message = outPutBase.Message,
@@ -71,7 +71,7 @@ namespace Users.Core.Application.UseCases.Users.PutUser
                 // Publicar a mensagem na fila RabbitMQ Evento: PaymentProcessedEvent
                 await _publisher.Publish(messageResp, _rabbitMqConfigurationSettings.GetQueueAdress());
 
-                ProcessedOutput outPut = new ProcessedOutput
+                ProcessedOutPut outPut = new ProcessedOutPut
                 {                    
                     Result = true,
                     Message = "Payment executed successfully",
@@ -82,7 +82,7 @@ namespace Users.Core.Application.UseCases.Users.PutUser
             }
             catch (Exception ex)
             {
-                return new ProcessedOutput
+                return new ProcessedOutPut
                 {
                     Result = false,
                     Message = "Ocorreu umm erro de Runtime Interno",

@@ -3,17 +3,17 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using Payments.Core.Application.UseCases.Payment.Processed;
 using Payments.Core.Domain.Interfaces;
-using Users.Core.Application.UseCases.Users.PutUser;
+using Quartz.Logging;
 
 namespace Payments.Core.Entities.RabbitMq
 {
     public class OrderPlacedEventConsumer: IConsumer<OrderPlacedMessage>
     {
-        private readonly IProcessedUseCase _processedUseCase;
+        private readonly ProcessedUseCase _processedUseCase;
         private readonly ILogger<OrderPlacedEventConsumer> _logger;
 
         public OrderPlacedEventConsumer(
-            IProcessedUseCase processedUseCase,
+            ProcessedUseCase processedUseCase,
             ILogger<OrderPlacedEventConsumer> logger
             )
         {
@@ -23,7 +23,9 @@ namespace Payments.Core.Entities.RabbitMq
         public async Task Consume(ConsumeContext<OrderPlacedMessage> context)
         {
 
-            ProcessedOutput _processedInput = await _processedUseCase.ExecuteAsync(
+            _logger.LogInformation("OrderPlacedEventConsumer - Iniciando consumo da mensagem de OrderPlacedMessage");
+
+            ProcessedOutPut _processedInput = await _processedUseCase.ExecuteAsync(
                 new ProcessedInput (context.Message.IdUser,context.Message.IdGame,context.Message.Price));
 
 

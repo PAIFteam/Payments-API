@@ -1,7 +1,8 @@
-﻿using Payments.Core.Application.UseCases.Payment;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Users.Core.Application.UseCases.Users.PutUser;
+using Payments.Core.Application.UseCases.Payment.Processed;
+using Payments.Core.Domain.Interfaces;
+using Payments.Infra.RabbitMq.Publishers;
 
 namespace Payments.Infra.Extensions
 {
@@ -22,7 +23,7 @@ namespace Payments.Infra.Extensions
 
             //Registro dos UseCases
             services.AddScoped<ProcessedUseCase>();
-            
+
             return services;
         }
     }
