@@ -24,16 +24,23 @@ namespace Payments.Core.Entities.RabbitMq
         {
 
             _logger.LogInformation("OrderPlacedEventConsumer - Iniciando consumo da mensagem de OrderPlacedMessage");
+            _logger.LogInformation("......");
+            _logger.LogInformation("Enviar dados para processadora de Pagamento");
+            _logger.LogInformation("......");
+            _logger.LogInformation("......");
+
+            await Task.CompletedTask;
 
             ProcessedOutPut _processedInput = await _processedUseCase.ExecuteAsync(
                 new ProcessedInput (context.Message.IdUser,context.Message.IdGame,context.Message.Price));
+         
 
-
-            // Lógica para enviar notificação de boas-vindas ao cliente
-            Console.WriteLine($"Enviando dados para execução de pagamento,  {context.Message.IdUser} " +
+            _logger.LogInformation($"Enviando dados para execução de pagamento,  {context.Message.IdUser} " +
                 $" IdGame ({context.Message.IdGame}) e Price {context.Message.Price.ToString()}");
+     
+
             // Simulação de envio de e-mail ou outra ação
-            await Task.CompletedTask;
+            
         }
     }
 }
