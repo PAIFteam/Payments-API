@@ -27,7 +27,9 @@ namespace Payments.Core.Application.UseCases.Payment.Processed
         public async Task<ProcessedOutPut> ExecuteAsync(ProcessedInput input)
         {
 
-            _logger.LogInformation("Starting ProcessedUseCase.ExecuteAsync");
+            _logger.LogInformation("Starting ProcessedUseCase.ExecuteAsync -USE CASE DE PROCESMENTO DE PAGAMENTO");
+            _logger.LogInformation("......");
+            _logger.LogInformation("......");
 
             var paymentAproved = false;
             var messageRespText = "";
@@ -54,13 +56,14 @@ namespace Payments.Core.Application.UseCases.Payment.Processed
                     //Rejeitado por falta de Saldo
                     paymentAproved = false;
                     messageRespText = "Pagamento Rejeitado por falta de saldo";
+                    _logger.LogInformation("Pagamento RECUSADO!!! por falta de saldo");
                 }
                 else
                 {
                     //Pagamento Aprovado
                     paymentAproved = true;
                     messageRespText = "Aprovado com sucesso";
-
+                    _logger.LogInformation("Pagamento APROVADO");
                 }
 
                 var messageResp = new PaymentProcessedMessage(input.IdUser,
@@ -69,8 +72,11 @@ namespace Payments.Core.Application.UseCases.Payment.Processed
                                                               paymentAproved,
                                                               messageRespText);
                 // Publicar a mensagem na fila RabbitMQ Evento: PaymentProcessedEvent
+                _logger.LogInformation(".....");
+                _logger.LogInformation(".....");
+                _logger.LogInformation("Publicando mensagem de PaymentProcessedMessage na fila RabbitMQ - Resposta do Processamento");
                 await _publisher.Publish(messageResp, _rabbitMqConfigurationSettings.GetQueueAdress());
-
+                await _publisher.Publish(messageResp, _rabbitMqConfigurationSettings.GetQueueAdressMessage());
                 ProcessedOutPut outPut = new ProcessedOutPut
                 {                    
                     Result = true,

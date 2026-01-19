@@ -17,6 +17,7 @@ namespace Payments.Core.Domain.Entities.RabbitMQ
         public List<int> RedeliveryInSeconds { get; set; }
         public List<int> RetryInSeconds { get; set; }
         public string QueueName { get; set; }
+        public string QueueNameMessage { get; set; }
         public string QueueNameConsumer { get; set; }
         public string ScheduleQueueName { get; set; }
         public bool StartConsumer { get; set; } = false;
@@ -24,6 +25,7 @@ namespace Payments.Core.Domain.Entities.RabbitMQ
         //rabbitmq://[usuário:senha@]host[:porta]/[vhost/][nome-da-fila-ou-exchange]
         //public Uri GetQueueAdress() => new Uri($"amqp://{Username}:{Password}@{HostName}:5672/{QueueName}");
         public Uri GetQueueAdress() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueName}");
+        public Uri GetQueueAdressMessage() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueNameMessage}");
         public Uri GetQueueAdressConsumer() => new Uri($"rabbitmq://{Username}:{Password}@{HostName}:5672/{QueueNameConsumer}");
     }
 }
