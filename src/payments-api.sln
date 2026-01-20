@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36603.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11408.102 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{7D1C0D02-2A7B-4BE8-9975-83861F4CBE9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{BA882DA7-CB25-4189-BDC9-072F2251DA3E}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Infra", "Service\Payments\Payments.Infra\Payments.Infra.csproj", "{1B60A191-C5FF-AC6E-8178-ABED966D1D45}"
 EndProject
@@ -33,10 +31,6 @@ Global
 		{BA882DA7-CB25-4189-BDC9-072F2251DA3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA882DA7-CB25-4189-BDC9-072F2251DA3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA882DA7-CB25-4189-BDC9-072F2251DA3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B60A191-C5FF-AC6E-8178-ABED966D1D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B60A191-C5FF-AC6E-8178-ABED966D1D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B60A191-C5FF-AC6E-8178-ABED966D1D45}.Release|Any CPU.ActiveCfg = Release|Any CPU

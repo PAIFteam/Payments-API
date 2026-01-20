@@ -1,6 +1,0 @@
-services:
-  paymentdb:
-    image: postgres
-
-volumes:
-  postgres_paymentdb:
