@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using Payments.API.Extensions;
 //using Payments.Core.Application.UseCases.Payment.Processed;
 using Payments.Core.Domain.Interfaces;
@@ -47,7 +48,7 @@ if (!app.Environment.IsProduction())
             var scheme = httpReq.Headers["X-Forwarded-Proto"].FirstOrDefault() ?? httpReq.Scheme;
             var host = httpReq.Headers["X-Forwarded-Host"].FirstOrDefault() ?? httpReq.Host.Value;
     
-            swagger.Servers = new List<Microsoft.OpenApi.Models.OpenApiServer>
+            swagger.Servers = new List<OpenApiServer>
             {
                 new() { Url = $"{scheme}://{host}/payments" }
             };
