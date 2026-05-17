@@ -18,12 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Extensions\UserEndpointsExtensions.cs" />
     <Compile Remove="GlobalUsing.cs" />
     <Compile Remove="Models\PaymentModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.OpenApi" Version="2.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
   </ItemGroup>
 
