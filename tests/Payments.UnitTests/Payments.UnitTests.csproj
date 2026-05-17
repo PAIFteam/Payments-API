@@ -15,5 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Service\Payments\Payments.Core\Payments.Core.csproj" />
+    <ProjectReference Include="..\..\src\Service\Payments\Payments.Infra\Payments.Infra.csproj" />
   </ItemGroup>
 </Project>

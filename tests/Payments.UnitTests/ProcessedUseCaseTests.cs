@@ -40,4 +40,31 @@ public class ProcessedUseCaseTests
         publishedMessages.Should().HaveCount(2);
         publishedMessages.Should().OnlyContain(x => x.Aproved == expectedApproval && x.Message == expectedMessage);
     }
+
+    [Fact]
+    public async Task ExecuteAsync_PublicacaoFalha_DeveRetornarFalha()
+    {
+        var publisher = new Mock<IPublisher>();
+        publisher.Setup(x => x.Publish(It.IsAny<PaymentProcessedMessage>(), It.IsAny<Uri>()))
+            .ThrowsAsync(new InvalidOperationException("falha no broker"));
+
+        var settings = new RabbitMqConfigurationSettings
+        {
+            HostName = "localhost",
+            Username = "guest",
+            Password = "guest",
+            QueueName = "payment_processed",
+            QueueNameMessage = "payment_message",
+            QueueNameConsumer = "order_placed",
+            RedeliveryInSeconds = [],
+            RetryInSeconds = []
+        };
+
+        var sut = new ProcessedUseCase(settings, publisher.Object, Mock.Of<ILogger<ProcessedUseCase>>());
+
+        var result = await sut.ExecuteAsync(new ProcessedInput(1, 2, 100m));
+
+        result.Result.Should().BeFalse();
+        result.Exception.Should().BeOfType<InvalidOperationException>();
+    }
 }
